@@ -1,0 +1,63 @@
+import Block from "../gameObjects/block";
+
+export default class Level extends Phaser.Scene {
+    constructor(levelName, mapName, tilesetName) {
+        super('Level1');
+        this.mapName = mapName;
+        this.tilesetName = tilesetName;
+    }
+
+    create() {
+        this.map = this.make.tilemap({ key: this.mapName });
+        this.tileset = this.map.addTilesetImage(this.tilesetName, this.tilesetName);
+        
+        this.ground = this.map.createLayer('ground', this.tileset, 0, 0);
+        this.ground.setCollisionByExclusion([-1]);
+
+        this.objects = {};
+        this.objects["birds"] = [];
+        this.objects["cats"] = [];
+        this.objects["blocks"] = [];
+        this.objects["slingshot"] = [];
+        this.objects["birdSpawn"] = [];
+
+        this.instantiateGameObjectsFromLayer(this.map);
+    }
+
+
+    serializeObjectProperties(propertiesArray){
+      if(!propertiesArray) return {};
+      const properties = {};
+      for(let prop of propertiesArray){
+        properties[prop.name] = prop.value; 
+      }
+      return properties;
+    }
+
+    instantiateGameObjectsFromLayer(map){
+       const objects = map.getObjectLayer("gameObjects").objects;
+
+       for(let obj of objects){
+        //Tiled object properties are stored in an array for some stupid reason so we need to convert them to an object first
+        let properties = this.serializeObjectProperties(obj.properties);
+     
+         switch(properties['type']){
+            case "cat":
+                break;
+            case "catKing":
+                break;
+            case "birdSpawn":
+                break;
+            case "slingshot":
+                break;
+            case undefined:
+                console.warn(`Game object at (${obj.x}, ${obj.y}) is missing a 'type' property.`);
+                break;
+            default:
+                this.objects["blocks"].push(new Block(this, obj.x, obj.y - obj.height/2, properties['type'], obj.rotation));
+                break;
+
+         }
+     }
+   }
+}
