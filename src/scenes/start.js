@@ -48,5 +48,13 @@ export default class Start extends Phaser.Scene {
         this.add.text(screenWidth/2, screenHeight/2+100, '           Controls   \nHolda LMB and drag mouse to aim\nRelease LMB to shoot\nSpacebar to activate ability\n',
         { fontSize: 16, color: '#ffffffff', align: 'left' }).setOrigin(0.5);
 
+        this.input.keyboard.on('keydown-ONE', () => {
+            this.scene.start('Level1');
+        });
+
+        this.input.keyboard.on('keydown-TWO', () => {
+            this.scene.start('Level2');
+        }); 
+
     }
 }

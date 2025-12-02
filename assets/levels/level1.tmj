@@ -241,9 +241,14 @@
                          "value":15
                         }, 
                         {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"plankLongRock"
+                        }, 
+                        {
                          "name":"type",
                          "type":"string",
-                         "value":"plankLongConcrete"
+                         "value":"block"
                         }],
                  "rotation":90,
                  "type":"",
@@ -264,9 +269,14 @@
                          "value":10
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"plankLongWood"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":90,
                  "type":"",
@@ -287,9 +297,14 @@
                          "value":10
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"plankLongWood"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":90,
                  "type":"",
@@ -310,9 +325,14 @@
                          "value":0
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"circleRock"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":0,
                  "type":"",
@@ -333,9 +353,14 @@
                          "value":10
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"plankShortWood"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":90,
                  "type":"",
@@ -356,9 +381,14 @@
                          "value":10
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"squareWood"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":0,
                  "type":"",
@@ -379,9 +409,14 @@
                          "value":10
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"squareWood"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":0,
                  "type":"",
@@ -402,9 +437,14 @@
                          "value":5
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"plankShortGlass"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":0,
                  "type":"",
@@ -425,9 +465,14 @@
                          "value":5
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"plankShortGlass"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":0,
                  "type":"",
@@ -448,9 +493,14 @@
                          "value":10
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"plankShortWood"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":0,
                  "type":"",
@@ -471,9 +521,14 @@
                          "value":10
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"plankShortWood"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":0,
                  "type":"",
@@ -494,9 +549,14 @@
                          "value":15
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"squareRock"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":0,
                  "type":"",
@@ -517,9 +577,14 @@
                          "value":15
                         }, 
                         {
-                         "name":"type",
+                         "name":"subtype",
                          "type":"string",
                          "value":"squareRock"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
                         }],
                  "rotation":0,
                  "type":"",
@@ -553,9 +618,19 @@
                  "name":"",
                  "properties":[
                         {
+                         "name":"index",
+                         "type":"int",
+                         "value":0
+                        }, 
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"red"
+                        }, 
+                        {
                          "name":"type",
                          "type":"string",
-                         "value":"birdSpawn"
+                         "value":"bird"
                         }],
                  "rotation":0,
                  "type":"",
@@ -617,6 +692,90 @@
                  "width":4,
                  "x":285.454545454545,
                  "y":89.3409090909091
+                }, 
+                {
+                 "gid":3091,
+                 "height":4,
+                 "id":28,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"index",
+                         "type":"int",
+                         "value":1
+                        }, 
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"red"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"bird"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":37.3636363636364,
+                 "y":271.318181818182
+                }, 
+                {
+                 "gid":3091,
+                 "height":4,
+                 "id":29,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"index",
+                         "type":"int",
+                         "value":2
+                        }, 
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"blue"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"bird"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":22.0909090909091,
+                 "y":270.954545454545
+                }, 
+                {
+                 "gid":3091,
+                 "height":4,
+                 "id":30,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"index",
+                         "type":"int",
+                         "value":3
+                        }, 
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"black"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"bird"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":4.81818181818182,
+                 "y":271.681818181818
                 }],
          "offsetx":1,
          "offsety":0.5,
@@ -627,7 +786,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":28,
+ "nextobjectid":32,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

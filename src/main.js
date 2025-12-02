@@ -3,6 +3,7 @@
 //import Phaser from '../phaser.js'; // DONT UNCOMMENT THIS IS WHY IT WAS BLACK SCREEN FOR SO LONG
 import Start from './scenes/start.js';
 import { screenWidth, screenHeight, gravityY } from './rules/gameInfo.js';
+import Level1 from './scenes/level1.js';
 const config = {
     type: Phaser.AUTO,
     roundPixels: false,
@@ -13,11 +14,11 @@ const config = {
         default: 'arcade',
         arcade: {
             gravity: { y: gravityY },
-            debug: false
+            debug: true
         }
     },
     pixelArt: true,
-    scene: [Start] 
+    scene: [Start, Level1] 
 };
 
 new Phaser.Game(config);

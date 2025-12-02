@@ -1,8 +1,8 @@
-import Block from "../gameObjects/block";
+import Block from "../gameObjects/block.js";
 
 export default class Level extends Phaser.Scene {
     constructor(levelName, mapName, tilesetName) {
-        super('Level1');
+        super(levelName);
         this.mapName = mapName;
         this.tilesetName = tilesetName;
     }
@@ -19,7 +19,6 @@ export default class Level extends Phaser.Scene {
         this.objects["cats"] = [];
         this.objects["blocks"] = [];
         this.objects["slingshot"] = [];
-        this.objects["birdSpawn"] = [];
 
         this.instantiateGameObjectsFromLayer(this.map);
     }
@@ -34,6 +33,7 @@ export default class Level extends Phaser.Scene {
       return properties;
     }
 
+
     instantiateGameObjectsFromLayer(map){
        const objects = map.getObjectLayer("gameObjects").objects;
 
@@ -46,15 +46,15 @@ export default class Level extends Phaser.Scene {
                 break;
             case "catKing":
                 break;
-            case "birdSpawn":
+            case "bird":
                 break;
             case "slingshot":
                 break;
             case undefined:
                 console.warn(`Game object at (${obj.x}, ${obj.y}) is missing a 'type' property.`);
                 break;
-            default:
-                this.objects["blocks"].push(new Block(this, obj.x, obj.y - obj.height/2, properties['type'], obj.rotation));
+            case "block":
+                this.objects["blocks"].push(new Block(this, obj.x, obj.y - obj.height/2, properties['subtype'], obj.rotation));
                 break;
 
          }
