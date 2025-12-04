@@ -366,11 +366,6 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"hp",
-                         "type":"int",
-                         "value":10
-                        }, 
-                        {
                          "name":"subtype",
                          "type":"string",
                          "value":"plankLongWood"
@@ -384,8 +379,8 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":271,
-                 "y":118.166666666667
+                 "x":272.090909090909,
+                 "y":117.621212121212
                 }, 
                 {
                  "gid":2955,
@@ -393,11 +388,6 @@
                  "id":34,
                  "name":"",
                  "properties":[
-                        {
-                         "name":"hp",
-                         "type":"int",
-                         "value":10
-                        }, 
                         {
                          "name":"subtype",
                          "type":"string",
@@ -422,11 +412,6 @@
                  "name":"",
                  "properties":[
                         {
-                         "name":"hp",
-                         "type":"int",
-                         "value":10
-                        }, 
-                        {
                          "name":"subtype",
                          "type":"string",
                          "value":"plankLongWood"
@@ -450,6 +435,29 @@
                  "name":"",
                  "properties":[
                         {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"circleRock"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
+                        }],
+                 "rotation":90,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":273.333333333333,
+                 "y":213.5
+                }, 
+                {
+                 "gid":2955,
+                 "height":4,
+                 "id":37,
+                 "name":"",
+                 "properties":[
+                        {
                          "name":"hp",
                          "type":"int",
                          "value":10
@@ -468,8 +476,8 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":273.333333333333,
-                 "y":213.5
+                 "x":147,
+                 "y":5.83333333333331
                 }],
          "offsetx":1,
          "offsety":0.5,
@@ -480,7 +488,7 @@
          "y":0
         }],
  "nextlayerid":4,
- "nextobjectid":37,
+ "nextobjectid":38,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

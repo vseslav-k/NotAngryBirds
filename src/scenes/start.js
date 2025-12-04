@@ -1,5 +1,6 @@
 // start.js
 import { screenWidth, screenHeight } from '../rules/gameInfo.js';
+import { setBlockData } from '../rules/gameInfo.js';
 export default class Start extends Phaser.Scene {
     constructor() { super('Start'); }
 
@@ -34,10 +35,14 @@ export default class Start extends Phaser.Scene {
         this.load.image('plankLongRock', '../assets/sprites/blocks/plankLongRock.png');
         this.load.image('plankShortRock', '../assets/sprites/blocks/plankShortRock.png');
         this.load.image('squareRock', '../assets/sprites/blocks/squareRock.png');
+
+        this.load.json('blockProperties', '../data/blockProperties.json');
        
     }
 
     create() {
+        setBlockData(this.cache.json.get('blockProperties'));
+
         this.add.rectangle(0, 0, this.scale.width, this.scale.height, 0x06767).setOrigin(0);
         this.add.text(screenWidth/2, screenHeight/2-220, 'Select level',
         { fontSize: 24, color: '#fff' }).setOrigin(0.5);

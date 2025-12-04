@@ -54,7 +54,7 @@ export default class Level extends Phaser.Scene {
                 console.warn(`Game object at (${obj.x}, ${obj.y}) is missing a 'type' property.`);
                 break;
             case "block":
-                this.objects["blocks"].push(new Block(this, obj.x, obj.y - obj.height/2, properties['subtype'], obj.rotation));
+                this.objects["blocks"].push(new Block(this, obj, properties['subtype']));
                 break;
 
          }

@@ -1,14 +1,31 @@
 
+import { blockData } from '../rules/gameInfo.js';
 export default class Block extends Phaser.Physics.Arcade.Sprite {
-    constructor(scene, x, y, type, degrees) {
-        super(scene, x, y, type, 0);
+    constructor(scene, obj, type) {
+        super(scene, obj.x, obj.y, type, 0);
         scene.add.existing(this);
+        this.setScale(obj.width / 4, obj.height /4);
         scene.physics.add.existing(this, false);
         
-        this.makeCollider(scene, type, degrees);
+        this.makeCollider(scene, type, obj.rotation);
+        this.readBlockData(type);
         
         
 
+    }
+
+
+    readBlockData(type){
+        if(!(type in blockData)){
+            console.warn(`Block type '${type}' not found in block data.`);
+            return {};
+        }
+
+        this.hp = blockData[type]['hp'];
+        this.body.mass = blockData[type]['mass'];
+        this.setBounce(blockData[type]['bounce']);
+        this.setDrag(blockData[type]['dragX'], blockData[type]['dragY']);
+    
     }
 
 
