@@ -28,7 +28,7 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
     setProjectile(projectile){
         this.projectile = projectile;
         this.projectile.body.allowGravity = false;
-        this.projectile.body.setVelocity(0,0);
+        this.projectile.body.setVelocity(0,0);this.projectile
         this.projectile.setPosition(this.x, this.y + this.offsetY);
 
     }
@@ -43,11 +43,14 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
 
     aimSlingshot(){
 
+
         this.shotVector.x = this.x - this.scene.input.activePointer.x;
         this.shotVector.y = this.y+this.offsetY  - this.scene.input.activePointer.y + this.offsetY;
         if(this.shotVector.length() > this.maxLength){
             this.shotVector = this.shotVector.normalize().scale(this.maxLength);
         }
+
+        this.projectile.setPosition(this.x - this.shotVector.x, this.y + this.offsetY - this.shotVector.y);
     }
     drawBand(){
         this.graphics.lineStyle(4, 0x381506, 1);
@@ -55,12 +58,16 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
         this.graphics.strokeLineShape(lineGeometry);
     }
 
+    sqrDist(x1, x2, y1, y2){
+        return (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
+    }
+
 
     preUpdate(time, delta) {
         super.preUpdate(time, delta);
         
         this.graphics.clear();
-        if(this.scene.input.activePointer.leftButtonDown()){
+        if(this.scene.input.activePointer.leftButtonDown() &&  this.sqrDist(this.scene.input.activePointer.x, this.x, this.scene.input.activePointer.y, this.y) < this.maxLength * this.maxLength*3){
             this.aimSlingshot();
             this.drawBand();
         }

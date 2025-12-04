@@ -120,7 +120,7 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
 
         if((this.body.touching.right && this.body.touching.left) || (this.blockedLeftDelayed && this.blockedRightDelayed)){
             console.log(this.texture.key + " stopping horizontal movement.");
-            this.body.setVelocityX(this.body.velocity.x * 0.7);
+            this.body.setVelocityX(this.body.velocity.x * 0.65);
         }
 
         
