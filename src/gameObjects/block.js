@@ -6,6 +6,7 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         scene.add.existing(this);
         this.setScale(obj.width / 4, obj.height /4);
         scene.physics.add.existing(this, false);
+        scene.objects["blocks"].add(this);
         
         this.scene = scene;
         this.makeCollider(scene, type, obj.rotation);
@@ -19,6 +20,18 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         this.setImmovable(false);
         this.setPushable(true);
 
+
+
+
+
+
+
+
+
+        this.blockDelayTime = 70;
+        this.blockedLeftDelayed = false;
+        this.blockedRightDelayed = false;
+
     }
 
 
@@ -30,8 +43,10 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
 
         this.hp = blockData[type]['hp'];
         this.body.mass = blockData[type]['mass'] * Math.sqrt(this.scaleX*this.scaleY);
-        this.setBounce(blockData[type]['bounce']);
-        this.setDrag(blockData[type]['dragX'], blockData[type]['dragY']);
+        this.bounce =blockData[type]['bounce'];
+        this.setBounce(this.bounce);
+        this.drag = {x: blockData[type]['dragX'], y: blockData[type]['dragY']};
+        this.setDrag(this.drag.x,this.drag.y); 
 
         
     
@@ -80,13 +95,40 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         if(Math.abs(this.body.velocity.y) < 1){
           this.body.setBounce(0);
         }else{
-            this.body.setBounce(blockData[this.texture.key]['bounce']);
+            this.body.setBounce(this.bounce);
         }
+    }
+
+    stopBlockShooting(){
+
+        if(this.body.touching.left){
+            this.blockedLeftDelayed = true;
+            this.scene.time.delayedCall(this.blockDelayTime, () => {
+                if(this.body.touching.left) return;
+                this.blockedLeftDelayed = false;
+            });
+        }
+
+        if(this.body.touching.right){
+            this.blockedRightDelayed = true;
+            this.scene.time.delayedCall(this.blockDelayTime, () => {
+                if(this.body.touching.right) return;
+                this.blockedRightDelayed = false;
+            });
+        }
+
+
+        if((this.body.touching.right && this.body.touching.left) || (this.blockedLeftDelayed && this.blockedRightDelayed)){
+            console.log(this.texture.key + " stopping horizontal movement.");
+            this.body.setVelocityX(this.body.velocity.x * 0.7);
+        }
+
+        
     }
 
     applyGroundDrag(delta){
         if(this.body.blocked.down){
-            this.body.setVelocityX(Math.max(this.body.velocity.x - delta * blockData[this.texture.key]["dragX"], 0));
+            this.body.setVelocityX(Math.max(this.body.velocity.x - delta * this.drag.x, 0));
         }
     }
 
@@ -105,7 +147,7 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         console.log(this.texture.key + " took " + damage + " damage.");
         this.hp -= damage;
         this.tint -= damage * 0x110000;
-        if(this.hp <= 0) this.destroy();
+        //if(this.hp <= 0) this.destroy();
 
     }
 
@@ -121,6 +163,7 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
 
 
        this.stopBlockJitter();
+       this.stopBlockShooting();
 
        this.setTint(this.tint);
 

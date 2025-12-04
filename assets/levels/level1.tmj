@@ -379,8 +379,8 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":134.5,
-                 "y":247
+                 "x":177.5,
+                 "y":269
                 }, 
                 {
                  "gid":2955,
@@ -391,7 +391,7 @@
                         {
                          "name":"subtype",
                          "type":"string",
-                         "value":"squareRock"
+                         "value":"squareWood"
                         }, 
                         {
                          "name":"type",
@@ -402,8 +402,8 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":321,
-                 "y":12
+                 "x":377,
+                 "y":181
                 }, 
                 {
                  "gid":2955,
@@ -425,8 +425,8 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":133.5,
-                 "y":294.5
+                 "x":224.5,
+                 "y":269.5
                 }, 
                 {
                  "gid":2955,
@@ -454,52 +454,6 @@
                 {
                  "gid":2955,
                  "height":4,
-                 "id":54,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"subtype",
-                         "type":"string",
-                         "value":"plankShortGlass"
-                        }, 
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"block"
-                        }],
-                 "rotation":90,
-                 "type":"",
-                 "visible":true,
-                 "width":4,
-                 "x":199,
-                 "y":-36.5
-                }, 
-                {
-                 "gid":2955,
-                 "height":4,
-                 "id":55,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"subtype",
-                         "type":"string",
-                         "value":"plankShortGlass"
-                        }, 
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"block"
-                        }],
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":4,
-                 "x":132.5,
-                 "y":180
-                }, 
-                {
-                 "gid":2955,
-                 "height":4,
                  "id":56,
                  "name":"",
                  "properties":[
@@ -517,8 +471,8 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":134.5,
-                 "y":135.5
+                 "x":265.5,
+                 "y":224.5
                 }],
          "offsetx":1,
          "offsety":0.5,

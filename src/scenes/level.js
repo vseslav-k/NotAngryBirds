@@ -15,12 +15,14 @@ export default class Level extends Phaser.Scene {
         this.ground.setCollisionByExclusion([-1]);
 
         this.objects = {};
-        this.objects["birds"] = [];
-        this.objects["cats"] = [];
-        this.objects["blocks"] = [];
-        this.objects["slingshot"] = [];
+        this.objects["birds"] = this.physics.add.group();
+        this.objects["cats"] = this.physics.add.group();
+        this.objects["blocks"] = this.physics.add.group();
+        this.objects["slingshot"] = this.add.group();
 
         this.instantiateGameObjectsFromLayer(this.map);
+
+        this.objects["slingshot"].getChildren()[0].setProjectile(this.objects["blocks"].getChildren()[0]);
     }
 
 
@@ -49,23 +51,25 @@ export default class Level extends Phaser.Scene {
             case "bird":
                 break;
             case "slingshot":
-                this.objects["slingshot"].push(new Slingshot(this, obj.x, obj.y));
+                new Slingshot(this, obj.x, obj.y);
                 break;
             case undefined:
                 console.warn(`Game object at (${obj.x}, ${obj.y}) is missing a 'type' property.`);
                 break;
             case "block":
-                this.objects["blocks"].push(new Block(this, obj, properties['subtype']));
+                new Block(this, obj, properties['subtype']);
                 break;
 
          }
      }
 
-     this.blockGroup = this.physics.add.group(this.objects["blocks"]);
-     this.physics.add.collider(this.blockGroup, this.blockGroup, (self, other) => {
+     this.physics.add.collider(this.objects["blocks"], this.objects["blocks"], (self, other) => {
         self.onHit(other);
      });
-     this.physics.add.collider(this.blockGroup, this.ground, (block, ground) => {
+     this.physics.add.overlap(this.objects["blocks"], this.objects["blocks"], (self, other) => {
+        self.onHit(other);
+    });
+     this.physics.add.collider(this.objects["blocks"], this.ground, (block, ground) => {
         block.onHit(ground);
     });
 

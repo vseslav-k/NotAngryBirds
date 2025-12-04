@@ -1,9 +1,11 @@
+import Block from "./block.js";
 export default class Slingshot extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y) {
         super(scene, x, y, 'slingshot');
         scene.add.existing(this);
         this.scene = scene;
         this.setScale(0.11);
+        scene.objects["slingshot"].add(this);
 
         this.shotVector = new Phaser.Math.Vector2(0, 0);
         this.maxLength = 50;
@@ -16,9 +18,26 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
             }
         });
 
+        this.projectile = null;
+        this.shootForce = 10;
+
+        
+
+    }
+
+    setProjectile(projectile){
+        this.projectile = projectile;
+        this.projectile.body.allowGravity = false;
+        this.projectile.body.setVelocity(0,0);
+        this.projectile.setPosition(this.x, this.y + this.offsetY);
+
     }
 
     shoot(){
+        if(this.projectile == null) return;
+        this.projectile.body.setVelocity(this.shotVector.x * this.shootForce, this.shotVector.y * this.shootForce);
+        this.projectile.body.allowGravity = true;
+        this.projectile = null;
         console.log("Shooting with vector: ", this.shotVector);
     }
 
@@ -46,7 +65,5 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
             this.drawBand();
         }
 
-
-        //console.log(this.shotVector);
     }
 }

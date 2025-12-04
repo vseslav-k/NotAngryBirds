@@ -9,7 +9,7 @@
     "circleWood":{
         "mass": 0.75,
         "bounce": 0.3,
-        "dragX": 0.01,
+        "dragX": 0.02,
         "dragY": 0.002,
         "hp": 10
     },
@@ -37,7 +37,7 @@
     "circleRock":{
         "mass": 2.25,
         "bounce": 0.03,
-        "dragX": 0.01,
+        "dragX": 0.02,
         "dragY": 0.002,
         "hp": 20
     },
@@ -65,7 +65,7 @@
     "circleGlass":{
         "mass": 1.25,
         "bounce": 0.03,
-        "dragX": 0.01,
+        "dragX": 0.02,
         "dragY": 0.002,
         "hp":5
     },
