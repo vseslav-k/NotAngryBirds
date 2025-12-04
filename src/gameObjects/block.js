@@ -30,7 +30,6 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
 
 
     makeCollider(scene, type, degrees){
-        
 
         //we are making a circular type block so we need to set the body to be a circle
         if(type[0] == "c") this.body.setCircle(8);
@@ -46,10 +45,24 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
             }
         }
 
-        
     
         scene.physics.add.collider(this, scene.ground);
         for(let obj of scene.objects["blocks"]) scene.physics.add.collider(this, obj);
+
+    }
+
+    stopBlockJitter(){
+        if(Math.abs(this.body.velocity.y) < 1){
+          this.body.setBounce(0);
+        }else{
+            this.body.setBounce(blockData[this.texture.key]['bounce']);
+        }
+    }
+
+    preUpdate(time, delta){
+       super.preUpdate(time, delta);
+
+       this.stopBlockJitter();
 
     }
 }
