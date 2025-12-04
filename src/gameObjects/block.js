@@ -40,8 +40,8 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
             this.setAngle(degrees);
             if(degrees == 90) {
                 [this.body.height, this.body.width] = [this.body.width, this.body.height];
-                this.body.offset.x = (-1 * this.body.width + this.width) / 2;
-                this.body.offset.y = (-1 * this.body.height + this.height) / 2;
+                this.body.offset.x =  (this.width - this.body.width/(this.scaleX)) / 2;
+                this.body.offset.y =  (this.height - this.body.height/(this.scaleY)) / 2;
             }
         }
 
