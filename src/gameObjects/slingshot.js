@@ -2,15 +2,20 @@ import Block from "./block.js";
 export default class Slingshot extends Phaser.GameObjects.Sprite {
     constructor(scene, x, y) {
         super(scene, x, y, 'slingshot');
+
         scene.add.existing(this);
+        scene.objects["slingshot"].add(this);
         this.scene = scene;
         this.setScale(0.11);
-        scene.objects["slingshot"].add(this);
+
+
 
         this.shotVector = new Phaser.Math.Vector2(0, 0);
         this.maxLength = 50;
         this.graphics = scene.add.graphics();
         this.offsetY = -9;
+        this.projectile = null;
+        this.shootForce = 15;
 
         this.scene.input.on('pointerup', (pointer) => {
             if (pointer.button === 0 && this.shotVector.length() > 10) {
@@ -18,8 +23,6 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
             }
         });
 
-        this.projectile = null;
-        this.shootForce = 10;
 
         
 
@@ -42,6 +45,11 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
     }
 
     aimSlingshot(){
+        if(!(this.scene.input.activePointer.leftButtonDown() &&  this.sqrDist(this.scene.input.activePointer.x, this.x, this.scene.input.activePointer.y, this.y) < this.maxLength * this.maxLength*4)){
+             if(this.projectile && this.sqrDist(this.projectile.x, this.x, this.projectile.y, this.y) > 100)this.projectile.setPosition(this.x, this.y + this.offsetY);
+             return;
+        }
+    
 
 
         this.shotVector.x = this.x - this.scene.input.activePointer.x;
@@ -50,7 +58,9 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
             this.shotVector = this.shotVector.normalize().scale(this.maxLength);
         }
 
-        this.projectile.setPosition(this.x - this.shotVector.x, this.y + this.offsetY - this.shotVector.y);
+        if(this.projectile)this.projectile.setPosition(this.x - this.shotVector.x, this.y + this.offsetY - this.shotVector.y);
+
+        this.drawBand();
     }
     drawBand(){
         this.graphics.lineStyle(4, 0x381506, 1);
@@ -67,10 +77,8 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
         super.preUpdate(time, delta);
         
         this.graphics.clear();
-        if(this.scene.input.activePointer.leftButtonDown() &&  this.sqrDist(this.scene.input.activePointer.x, this.x, this.scene.input.activePointer.y, this.y) < this.maxLength * this.maxLength*3){
-            this.aimSlingshot();
-            this.drawBand();
-        }
+        this.aimSlingshot();
+        
 
     }
 }

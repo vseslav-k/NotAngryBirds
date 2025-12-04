@@ -379,8 +379,8 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":177.5,
-                 "y":269
+                 "x":23.5,
+                 "y":192
                 }, 
                 {
                  "gid":2955,
@@ -391,42 +391,19 @@
                         {
                          "name":"subtype",
                          "type":"string",
-                         "value":"squareWood"
+                         "value":"plankLongRock"
                         }, 
                         {
                          "name":"type",
                          "type":"string",
                          "value":"block"
                         }],
-                 "rotation":90,
+                 "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":377,
-                 "y":181
-                }, 
-                {
-                 "gid":2955,
-                 "height":4,
-                 "id":52,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"subtype",
-                         "type":"string",
-                         "value":"plankShortWood"
-                        }, 
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"block"
-                        }],
-                 "rotation":90,
-                 "type":"",
-                 "visible":true,
-                 "width":4,
-                 "x":224.5,
-                 "y":269.5
+                 "x":266,
+                 "y":56
                 }, 
                 {
                  "gid":2955,
