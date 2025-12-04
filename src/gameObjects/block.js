@@ -9,7 +9,7 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         
         this.makeCollider(scene, type, obj.rotation);
         this.readBlockData(type);
-        
+        this.body.damping = true;
         
 
     }
@@ -22,7 +22,7 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         }
 
         this.hp = blockData[type]['hp'];
-        this.body.mass = blockData[type]['mass'];
+        this.body.mass = blockData[type]['mass'] * Math.sqrt(this.scaleX*this.scaleY);
         this.setBounce(blockData[type]['bounce']);
         this.setDrag(blockData[type]['dragX'], blockData[type]['dragY']);
     
@@ -59,8 +59,15 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
+    applyGroundDrag(delta){
+        if(this.body.blocked.down){
+            this.body.setVelocityX(Math.max(this.body.velocity.x - delta * blockData[this.texture.key]["dragX"], 0));
+        }
+    }
+
     preUpdate(time, delta){
        super.preUpdate(time, delta);
+       this.applyGroundDrag(delta);
 
        this.stopBlockJitter();
 

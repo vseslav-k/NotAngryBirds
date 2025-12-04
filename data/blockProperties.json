@@ -9,7 +9,7 @@
     "circleWood":{
         "mass": 0.75,
         "bounce": 0.3,
-        "dragX": 0.02,
+        "dragX": 0.01,
         "dragY": 0.002,
         "hp": 10
     },
@@ -17,14 +17,14 @@
         "mass": 3.75,
         "bounce": 0.1,
         "dragX": 0.1,
-        "dragY": 0.002,
+        "dragY": 0.1,
         "hp": 10
     },
     "plankShortWood":{
         "mass": 2.25,
         "bounce": 0.1,
         "dragX": 0.1,
-        "dragY": 0.002,
+        "dragY": 0.1,
         "hp": 10
     },
     "squareRock":{
@@ -37,7 +37,7 @@
     "circleRock":{
         "mass": 2.25,
         "bounce": 0.03,
-        "dragX": 0.06,
+        "dragX": 0.01,
         "dragY": 0.002,
         "hp": 20
     },
