@@ -1,5 +1,5 @@
 import Block from "../gameObjects/block.js";
-
+import Slingshot from "../gameObjects/slingshot.js";
 export default class Level extends Phaser.Scene {
     constructor(levelName, mapName, tilesetName) {
         super(levelName);
@@ -49,6 +49,7 @@ export default class Level extends Phaser.Scene {
             case "bird":
                 break;
             case "slingshot":
+                this.objects["slingshot"].push(new Slingshot(this, obj.x, obj.y));
                 break;
             case undefined:
                 console.warn(`Game object at (${obj.x}, ${obj.y}) is missing a 'type' property.`);

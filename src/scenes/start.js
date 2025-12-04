@@ -36,6 +36,8 @@ export default class Start extends Phaser.Scene {
         this.load.image('plankShortRock', '../assets/sprites/blocks/plankShortRock.png');
         this.load.image('squareRock', '../assets/sprites/blocks/squareRock.png');
 
+        this.load.image('slingshot', '../assets/sprites/slingshot.png');
+
         this.load.json('blockProperties', '../data/blockProperties.json');
        
     }
