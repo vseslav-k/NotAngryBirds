@@ -59,5 +59,14 @@ export default class Level extends Phaser.Scene {
 
          }
      }
+
+     this.blockGroup = this.physics.add.group(this.objects["blocks"]);
+     this.physics.add.collider(this.blockGroup, this.blockGroup, (self, other) => {
+        self.onHit(other);
+     });
+     this.physics.add.collider(this.blockGroup, this.ground, (block, ground) => {
+        block.onHit(ground);
+    });
+
    }
 }

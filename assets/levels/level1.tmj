@@ -368,7 +368,7 @@
                         {
                          "name":"subtype",
                          "type":"string",
-                         "value":"squareRock"
+                         "value":"circleRock"
                         }, 
                         {
                          "name":"type",
@@ -379,8 +379,8 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":292.5,
-                 "y":3.5
+                 "x":134.5,
+                 "y":247
                 }, 
                 {
                  "gid":2955,
@@ -402,8 +402,123 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":216.5,
-                 "y":216
+                 "x":321,
+                 "y":12
+                }, 
+                {
+                 "gid":2955,
+                 "height":4,
+                 "id":52,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"plankShortWood"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
+                        }],
+                 "rotation":90,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":133.5,
+                 "y":294.5
+                }, 
+                {
+                 "gid":2955,
+                 "height":4,
+                 "id":53,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"plankShortWood"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
+                        }],
+                 "rotation":90,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":312.5,
+                 "y":275
+                }, 
+                {
+                 "gid":2955,
+                 "height":4,
+                 "id":54,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"plankShortGlass"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
+                        }],
+                 "rotation":90,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":199,
+                 "y":-36.5
+                }, 
+                {
+                 "gid":2955,
+                 "height":4,
+                 "id":55,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"plankShortGlass"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":132.5,
+                 "y":180
+                }, 
+                {
+                 "gid":2955,
+                 "height":4,
+                 "id":56,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"squareWood"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
+                        }],
+                 "rotation":90,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":134.5,
+                 "y":135.5
                 }],
          "offsetx":1,
          "offsety":0.5,
@@ -414,7 +529,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":52,
+ "nextobjectid":57,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

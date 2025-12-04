@@ -16,6 +16,9 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         this.preCollideVelocity = {x: 0, y:0};
         this.isColliding = false;
 
+        this.setImmovable(false);
+        this.setPushable(true);
+
     }
 
 
@@ -29,39 +32,32 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         this.body.mass = blockData[type]['mass'] * Math.sqrt(this.scaleX*this.scaleY);
         this.setBounce(blockData[type]['bounce']);
         this.setDrag(blockData[type]['dragX'], blockData[type]['dragY']);
+
+        
     
     }
 
 
     makeCollider(scene, type, degrees){
 
-        //we are making a circular type block so we need to set the body to be a circle
-        if(type[0] == "c") this.body.setCircle(8);
-        else{
-            degrees %= 180;
-            if(degrees != 0 && degrees != 90) console.warn("Block angles other than 0 and 90 WILL cause unexpected behavior.");
+            //we are making a circular type block so we need to set the body to be a circle
+            if(type[0] == "c") this.body.setCircle(8);
+            else{
+                degrees %= 180;
+                if(degrees != 0 && degrees != 90) console.warn("Block angles other than 0 and 90 WILL cause unexpected behavior.");
 
-            this.setAngle(degrees);
-            if(degrees == 90) {
-                [this.body.height, this.body.width] = [this.body.width, this.body.height];
-                this.body.offset.x =  (this.width - this.body.width/(this.scaleX)) / 2;
-                this.body.offset.y =  (this.height - this.body.height/(this.scaleY)) / 2;
+                this.setAngle(degrees);
+                if(degrees == 90) {
+                    [this.body.height, this.body.width] = [this.body.width, this.body.height];
+                    this.body.offset.x =  (this.width - this.body.width/(this.scaleX)) / 2;
+                    this.body.offset.y =  (this.height - this.body.height/(this.scaleY)) / 2;
+                }
             }
-        }
-
-    
-        scene.physics.add.collider(this, scene.ground, (self, other) => {
-                self.onHit(other);
-            });
-        for (let obj of scene.objects["blocks"]) {
-            scene.physics.add.collider(this, obj, (self, other) => {
-                self.onHit(other);
-            });
-}
-
     }
+    
 
     onHit(other){
+        //console.log(this.texture.key + " collided with " + (other instanceof  Block? other.texture.key :"ground"));
 
         this.isColliding = true;
         
@@ -101,7 +97,7 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
 
         let force = (this.body.mass * vel*vel)/120000;
 
-        if(force > 1) console.log(this.texture.key + " velocity length: " + vel + " mass: " + this.body.mass + "force: " + force);
+        if(force > 1)console.log(this.texture.key + " velocity length: " + vel + " mass: " + this.body.mass + "force: " + force);
         return force;
     }
 
