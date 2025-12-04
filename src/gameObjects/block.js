@@ -7,11 +7,14 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         this.setScale(obj.width / 4, obj.height /4);
         scene.physics.add.existing(this, false);
         
+        this.scene = scene;
         this.makeCollider(scene, type, obj.rotation);
         this.readBlockData(type);
         this.body.damping = true;
         this.damage = 1;
         this.tint = 0xffffff;
+        this.preCollideVelocity = {x: 0, y:0};
+        this.isColliding = false;
 
     }
 
@@ -19,7 +22,7 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
     readBlockData(type){
         if(!(type in blockData)){
             console.warn(`Block type '${type}' not found in block data.`);
-            return {};
+            return ;
         }
 
         this.hp = blockData[type]['hp'];
@@ -47,26 +50,32 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         }
 
     
-        scene.physics.add.collider(this, scene.ground);
+        scene.physics.add.collider(this, scene.ground, (self, other) => {
+                self.onHit(other);
+            });
         for (let obj of scene.objects["blocks"]) {
             scene.physics.add.collider(this, obj, (self, other) => {
                 self.onHit(other);
-                other.onHit(self);
             });
 }
 
     }
 
     onHit(other){
-        
-        const otherForce = other.getForce();
-        console.log(otherForce);
-        if(otherForce < 3) return;
-        this.takeDamage(otherForce * this.damage);
 
+        this.isColliding = true;
+        
         const thisForce = this.getForce();
-        if(thisForce < 3) return;
-        other.takeDamage(thisForce * this.damage);
+
+        if(thisForce < 1) return;
+
+        this.takeDamage(thisForce * (other.damage ? other.damage : 1));
+
+        if(other instanceof  Block) other.takeDamage(thisForce * this.damage);
+
+
+        this.isColliding = false;
+    
     }
 
 
@@ -87,12 +96,19 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
 
     getForce(){
         if(this.body == null) return 0;
-        return (this.body.mass * this.body.velocity.length()*this.body.velocity.length())/5000;
+
+        let vel = Math.sqrt(this.preCollideVelocity.x**2 + this.preCollideVelocity.y**2);
+
+        let force = (this.body.mass * vel*vel)/120000;
+
+        if(force > 1) console.log(this.texture.key + " velocity length: " + vel + " mass: " + this.body.mass + "force: " + force);
+        return force;
     }
 
     takeDamage(damage){
+        console.log(this.texture.key + " took " + damage + " damage.");
         this.hp -= damage;
-        this.tint -= damage * 0xaaaaaa;
+        this.tint -= damage * 0x110000;
         if(this.hp <= 0) this.destroy();
 
     }
@@ -101,9 +117,14 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
        super.preUpdate(time, delta);
        this.applyGroundDrag(delta);
 
-       console.log(this.getForce());
+       if(!this.isColliding){
+        this.preCollideVelocity.x = this.body.velocity.x;
+        this.preCollideVelocity.y = this.body.velocity.y;
+       }
+    
 
-       //this.stopBlockJitter();
+
+       this.stopBlockJitter();
 
        this.setTint(this.tint);
 

@@ -1,6 +1,6 @@
 export const screenWidth = 1000;
 export const screenHeight = 650;
-export const gravityY = 1500;
+export const gravityY = 1000;
 
 
 export const blockData = {};

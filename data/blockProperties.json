@@ -1,9 +1,9 @@
 {
     "squareWood":{
         "mass": 1,
-        "bounce": 0.1,
+        "bounce": 0.3,
         "dragX": 0.1,
-        "dragY": 0.002,
+        "dragY": 0.1,
         "hp": 10
     },
     "circleWood":{
@@ -17,21 +17,21 @@
         "mass": 3.75,
         "bounce": 0.1,
         "dragX": 0.1,
-        "dragY": 0.1,
+        "dragY": 0.3,
         "hp": 10
     },
     "plankShortWood":{
         "mass": 2.25,
         "bounce": 0.1,
         "dragX": 0.1,
-        "dragY": 0.1,
+        "dragY": 0.2,
         "hp": 10
     },
     "squareRock":{
         "mass": 3,
         "bounce": 0.01,
-        "dragX": 0.3,
-        "dragY": 0.002,
+        "dragX": 0.1,
+        "dragY": 0.1,
         "hp": 20
     },
     "circleRock":{
@@ -44,22 +44,22 @@
     "plankLongRock": {
         "mass": 11.25,
         "bounce": 0.01,
-        "dragX": 0.3,
-        "dragY": 0.002,
+        "dragX": 0.2,
+        "dragY": 0.6,
         "hp": 20
     },
     "plankShortRock": {
         "mass": 6.75,
         "bounce": 0.01,
-        "dragX": 0.3,
-        "dragY": 0.002,
+        "dragX": 0.2,
+        "dragY": 0.4,
         "hp": 20
     },
     "squareGlass":{
         "mass": 1.5,
         "bounce": 0.01,
         "dragX": 0.05,
-        "dragY": 0.002,
+        "dragY": 0.05,
         "hp": 5
     },
     "circleGlass":{
@@ -73,14 +73,14 @@
         "mass": 5.75,
         "bounce": 0.01,
         "dragX": 0.05,
-        "dragY": 0.002,
+        "dragY": 0.15,
         "hp": 5
     },
     "plankShortGlass":{
         "mass": 3.25,
         "bounce": 0.01,
         "dragX": 0.05,
-        "dragY": 0.002,
+        "dragY": 0.1,
         "hp": 5
     }
 }
