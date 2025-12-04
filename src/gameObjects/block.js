@@ -10,7 +10,8 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         this.makeCollider(scene, type, obj.rotation);
         this.readBlockData(type);
         this.body.damping = true;
-        
+        this.damage = 1;
+        this.tint = 0xffffff;
 
     }
 
@@ -47,9 +48,28 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
 
     
         scene.physics.add.collider(this, scene.ground);
-        for(let obj of scene.objects["blocks"]) scene.physics.add.collider(this, obj);
+        for (let obj of scene.objects["blocks"]) {
+            scene.physics.add.collider(this, obj, (self, other) => {
+                self.onHit(other);
+                other.onHit(self);
+            });
+}
 
     }
+
+    onHit(other){
+        
+        const otherForce = other.getForce();
+        console.log(otherForce);
+        if(otherForce < 3) return;
+        this.takeDamage(otherForce * this.damage);
+
+        const thisForce = this.getForce();
+        if(thisForce < 3) return;
+        other.takeDamage(thisForce * this.damage);
+    }
+
+
 
     stopBlockJitter(){
         if(Math.abs(this.body.velocity.y) < 1){
@@ -65,11 +85,27 @@ export default class Block extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
+    getForce(){
+        if(this.body == null) return 0;
+        return (this.body.mass * this.body.velocity.length()*this.body.velocity.length())/5000;
+    }
+
+    takeDamage(damage){
+        this.hp -= damage;
+        this.tint -= damage * 0xaaaaaa;
+        if(this.hp <= 0) this.destroy();
+
+    }
+
     preUpdate(time, delta){
        super.preUpdate(time, delta);
        this.applyGroundDrag(delta);
 
-       this.stopBlockJitter();
+       console.log(this.getForce());
+
+       //this.stopBlockJitter();
+
+       this.setTint(this.tint);
 
     }
 }

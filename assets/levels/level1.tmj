@@ -482,29 +482,6 @@
                 {
                  "gid":2955,
                  "height":4,
-                 "id":40,
-                 "name":"",
-                 "properties":[
-                        {
-                         "name":"subtype",
-                         "type":"string",
-                         "value":"plankShortGlass"
-                        }, 
-                        {
-                         "name":"type",
-                         "type":"string",
-                         "value":"block"
-                        }],
-                 "rotation":90,
-                 "type":"",
-                 "visible":true,
-                 "width":4,
-                 "x":275.5,
-                 "y":65
-                }, 
-                {
-                 "gid":2955,
-                 "height":4,
                  "id":41,
                  "name":"",
                  "properties":[
@@ -516,7 +493,7 @@
                         {
                          "name":"subtype",
                          "type":"string",
-                         "value":"circleWood"
+                         "value":"circleRock"
                         }, 
                         {
                          "name":"type",
@@ -527,8 +504,8 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":123.5,
-                 "y":204.5
+                 "x":270.5,
+                 "y":17.5
                 }],
          "offsetx":1,
          "offsety":0.5,
