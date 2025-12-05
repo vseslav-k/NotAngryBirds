@@ -29,6 +29,8 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
         this.birds = [];
         this.currBirdIdx = 0;
 
+        this.lastLaunched = null;
+
         
 
     }
@@ -56,7 +58,7 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
 
     shoot(){
         if(this.projectile == null) return;
-        
+        this.lastLaunched = this.projectile;
         this.projectile.body.checkCollision.none = true;
         let arg =  this.projectile;
         this.scene.time.delayedCall(100, () => arg.body.checkCollision.none = false);

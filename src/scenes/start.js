@@ -19,7 +19,7 @@ export default class Start extends Phaser.Scene {
         this.load.image('orangeBird', '../assets/sprites/characters/orange.png');
 
         this.load.image('cat', '../assets/sprites/characters/cat.png');
-        this.load.image('catking', '../assets/sprites/characters/catKing.png');
+        this.load.image('catKing', '../assets/sprites/characters/catKing.png');
 
         this.load.image('circleGlass', '../assets/sprites/blocks/circleGlass.png');
         this.load.image('plankLongGlass', '../assets/sprites/blocks/plankLongGlass.png');

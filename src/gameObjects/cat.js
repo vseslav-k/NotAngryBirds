@@ -6,13 +6,11 @@ const catProperties = {
     "catKing": {
         "hp": 7,
         "mass": 2,
-        "score": 500,
-        "scale": 1.5
+        "scale": 1.1
     },
     "cat": {
         "hp": 5,
         "mass": 0.2,
-        "score": 250,
         "scale": 1
     }
 }
@@ -49,7 +47,6 @@ export default class Cat extends Item {
             readItemData(type){
                 this.hp = catProperties[type]['hp'];
                 this.body.mass = catProperties[type]['mass'];
-                this.score = catProperties[type]['score'];
                 this.setDrag(0.01);
                 this.bounce = 0.2;
                 this.setBounce(0.2);

@@ -261,7 +261,7 @@
                         {
                          "name":"subtype",
                          "type":"string",
-                         "value":"red"
+                         "value":"brown"
                         }, 
                         {
                          "name":"type",
@@ -289,7 +289,7 @@
                         {
                          "name":"subtype",
                          "type":"string",
-                         "value":"yellow"
+                         "value":"purple"
                         }, 
                         {
                          "name":"type",
@@ -460,7 +460,7 @@
                         {
                          "name":"subtype",
                          "type":"string",
-                         "value":"cat"
+                         "value":"catKing"
                         }, 
                         {
                          "name":"type",
