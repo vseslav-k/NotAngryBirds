@@ -22,7 +22,7 @@ function speed(bird){
 
 function clip(bird){
     bird.body.checkCollision.none = true;
-    bird.scene.time.delayedCall(300, () => bird.body.checkCollision.none = false);
+    bird.scene.time.delayedCall(100, () => bird.body.checkCollision.none = false);
 }
 
 function boomerang(bird){

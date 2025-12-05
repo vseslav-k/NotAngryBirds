@@ -9,7 +9,7 @@
     "blue": {
         "mass": 1,
         "scale": 0.75,
-        "damage": 0.6,
+        "damage": 0.7,
         "bounce": 0.3,
         "drag": 0.3,
         "ability": "triple"
@@ -61,7 +61,7 @@
         "ability": "drop"
     },
     "brown": {
-        "mass": 2.5,
+        "mass": 3.5,
         "scale": 1.75,
         "damage": 1,
         "bounce": 0.01,

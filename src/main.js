@@ -4,6 +4,7 @@
 import Start from './scenes/start.js';
 import { screenWidth, screenHeight, gravityY } from './rules/gameInfo.js';
 import Level1 from './scenes/level1.js';
+import Level2 from './scenes/level2.js';
 const config = {
     type: Phaser.AUTO,
     roundPixels: false,
@@ -19,7 +20,7 @@ const config = {
         }
     },
     pixelArt: true,
-    scene: [Start, Level1] 
+    scene: [Start, Level1, Level2] 
 };
 
 new Phaser.Game(config);

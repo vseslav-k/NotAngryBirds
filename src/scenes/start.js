@@ -5,7 +5,8 @@ export default class Start extends Phaser.Scene {
     constructor() { super('Start'); }
 
     preload() {
-        this.load.tilemapTiledJSON('level1', 'assets/levels/level1.tmj');
+        this.load.tilemapTiledJSON('level1', 'assets/levels/levelNew.tmj');
+        this.load.tilemapTiledJSON('level2', 'assets/levels/level2.tmj');
         this.load.image('world_tileset', '../assets/sprites/world_tileset.png');
 
         this.load.image('blackBird', '../assets/sprites/characters/black.png');

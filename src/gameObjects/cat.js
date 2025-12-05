@@ -9,7 +9,7 @@ const catProperties = {
         "scale": 1.1
     },
     "cat": {
-        "hp": 5,
+        "hp": 3,
         "mass": 0.2,
         "scale": 1
     }
