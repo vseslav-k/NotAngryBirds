@@ -1,6 +1,7 @@
 import Block from "../gameObjects/block.js";
 import Bird from "../gameObjects/bird.js";
 import Slingshot from "../gameObjects/slingshot.js";
+import Cat from "../gameObjects/cat.js";
 export default class Level extends Phaser.Scene {
     constructor(levelName, mapName, tilesetName) {
         super(levelName);
@@ -45,8 +46,7 @@ export default class Level extends Phaser.Scene {
      
             switch(properties['type']){
                 case "cat":
-                    break;
-                case "catKing":
+                    new Cat(this, obj, properties['subtype']);
                     break;
                 case "bird":
                     new Bird(this, obj, properties['subtype'], properties['index']);
@@ -83,6 +83,10 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.objects["birds"], this.ground, (bird, ground) => {
         bird.onHit(ground);
     });
+    this.physics.add.collider(this.objects["cats"], this.ground, (cat, ground) => {
+        cat.onHit(ground);
+    });
+
 
 
     this.physics.add.collider(this.objects["blocks"], this.objects["blocks"], (self, other) => {
@@ -100,6 +104,21 @@ export default class Level extends Phaser.Scene {
     this.physics.add.overlap(this.objects["birds"], this.objects["blocks"], (bird, block) => {
         bird.onHit(block);
     });
+
+    this.physics.add.collider(this.objects["cats"], this.objects["blocks"], (cat, block) => {
+        cat.onHit(block);
+    });
+    this.physics.add.overlap(this.objects["cats"], this.objects["blocks"], (cat, block) => {
+        //cat.onHit(block);
+    });
+
+    this.physics.add.collider(this.objects["cats"], this.objects["birds"], (cat, bird) => {
+        cat.onHit(bird);
+    });
+    this.physics.add.overlap(this.objects["cats"], this.objects["birds"], (cat, bird) => {
+        cat.onHit(bird);
+    });
+
 
 
    }

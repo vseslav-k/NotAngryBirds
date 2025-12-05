@@ -32,10 +32,20 @@ export default class Bird extends Item {
     }
 
     onHit(other){
-        let force= this.getForce();
-        if(force < 1) return;
 
-        if(other instanceof  Block) other.takeDamage(force * this.damage);
+        this.isColliding = true;
+        
+        const thisForce = this.getForce();
+
+        if(thisForce < 1){this.isColliding = false; return ;}
+
+        this.takeDamage(thisForce * (other.damage ? other.damage : 1));
+
+        if(other instanceof  Block) other.takeDamage(thisForce * this.damage);
+
+
+        this.isColliding = false;
+    
     }
    
 }

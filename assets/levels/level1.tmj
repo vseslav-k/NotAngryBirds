@@ -450,6 +450,29 @@
                  "width":4,
                  "x":265.5,
                  "y":224.5
+                }, 
+                {
+                 "gid":2955,
+                 "height":4,
+                 "id":57,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"cat"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"cat"
+                        }],
+                 "rotation":90,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":267.666666666667,
+                 "y":34.1666666666666
                 }],
          "offsetx":1,
          "offsety":0.5,
@@ -460,7 +483,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":57,
+ "nextobjectid":58,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",

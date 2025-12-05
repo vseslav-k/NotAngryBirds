@@ -54,7 +54,7 @@ export default class Block extends Item {
         
         const thisForce = this.getForce();
 
-        if(thisForce < 1) return;
+        if(thisForce < 1){this.isColliding = false; return ;}
 
         this.takeDamage(thisForce * (other.damage ? other.damage : 1));
 
