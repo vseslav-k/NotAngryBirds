@@ -72,6 +72,7 @@ export default class Bird extends Item {
             if(this.ability && this.slingshot.lastLaunched == this && !this.abilityUsed){
                 abilities[this.ability](this);
                 this.abilityUsed = true;
+                this.scene.sound.play('birdAbility');
             }
         }); 
     }

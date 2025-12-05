@@ -6,6 +6,7 @@ export default class Block extends Item {
         super(scene, obj, type);
         this.setScale(obj.width / 4, obj.height /4);
         scene.objects["blocks"].add(this);
+        
         this.tint = 0xffffff;
     }
 
@@ -22,6 +23,8 @@ export default class Block extends Item {
         this.setBounce(this.bounce);
         this.drag = {x: blockData[type]['dragX'], y: blockData[type]['dragY']};
         this.setDrag(this.drag.x,this.drag.y); 
+
+        this.maxHp = this.hp;
 
         
     
@@ -45,7 +48,20 @@ export default class Block extends Item {
                 }
             }
     }
-    
+
+    updateTint() {
+        let ratio = Phaser.Math.Clamp(1 - (this.hp / this.maxHp), 0, 1);
+
+        // ratio = 0 → no damage → normal color  
+        // ratio = 1 → full damage → completely red
+
+        let red   = 255;
+        let green = 255 * (1 - ratio);
+        let blue  = 255 * (1 - ratio);
+
+        this.setTint(Phaser.Display.Color.GetColor(red, green, blue));
+    }
+        
 
     onHit(other){
         //console.log(this.texture.key + " collided with " + (other instanceof  Block? other.texture.key :"ground"));
@@ -69,8 +85,11 @@ export default class Block extends Item {
 
     takeDamage(damage){
         super.takeDamage(damage);
-        this.tint -= damage * 0x110000;
-        if(this.hp <= 0) this.destroy();
+        this.updateTint();
+        if(this.hp <= 0){
+            this.scene.sound.play('destroy');
+            this.destroy();
+        }
 
     }
 

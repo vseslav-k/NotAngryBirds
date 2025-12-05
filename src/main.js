@@ -16,7 +16,7 @@ const config = {
         arcade: {
             fps: 150,
             gravity: { y: gravityY },
-            debug: true
+            //debug: true
         }
     },
     pixelArt: true,

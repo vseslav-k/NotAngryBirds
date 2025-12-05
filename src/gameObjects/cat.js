@@ -72,7 +72,10 @@ export default class Cat extends Item {
 
             takeDamage(damage){
                 super.takeDamage(damage);
-                if(this.hp <= 0) this.destroy();
+                if(this.hp <= 0){
+                    this.scene.sound.play('catDie');
+                    this.destroy();
+                }
             }
 
 }

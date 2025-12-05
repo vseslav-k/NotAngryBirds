@@ -41,6 +41,12 @@ export default class Start extends Phaser.Scene {
 
         this.load.json('blockProperties', '../data/blockProperties.json');
         this.load.json('birdProperties', '../data/birdProperties.json');
+
+
+        this.load.audio('catDie', '../assets/sounds/catDie.mp3');
+        this.load.audio('destroy', '../assets/sounds/destroy.mp3');
+        this.load.audio('shoot', '../assets/sounds/shoot.mp3');
+        this.load.audio('birdAbility', '../assets/sounds/birdAbility.mp3');
        
     }
 
@@ -55,7 +61,7 @@ export default class Start extends Phaser.Scene {
         this.add.text(screenWidth/2, screenHeight/2-140, '[1] Level 1 (Vee)\n[2] Level 2 (Abby)',
         { fontSize: 18, color: 'rgba(255, 255, 255, 1)', align: 'left' }).setOrigin(0.5);  
 
-        this.add.text(screenWidth/2, screenHeight/2+100, '           Controls   \nHolda LMB and drag mouse to aim\nRelease LMB to shoot\nSpacebar to activate ability\n',
+        this.add.text(screenWidth/2, screenHeight/2+100, '           Controls   \nHolda LMB and drag mouse to aim\nRelease LMB to shoot\nSpacebar to activate ability(yellow, blue, green, purple, black)\nWASD to move camera \n',
         { fontSize: 16, color: '#ffffffff', align: 'left' }).setOrigin(0.5);
 
         this.input.keyboard.on('keydown-ONE', () => {

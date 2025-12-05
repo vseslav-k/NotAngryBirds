@@ -57,6 +57,7 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
     }
 
     shoot(){
+        this.scene.sound.play('shoot');
         if(this.projectile == null) return;
         this.lastLaunched = this.projectile;
         this.projectile.body.checkCollision.none = true;

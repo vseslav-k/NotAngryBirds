@@ -1,0 +1,15 @@
+Data driven design and coding patterns - Check check check. Very much
+
+Physics - Arcade physics with lots of hand made addons. it was hard to get them to at least pretend to work. Check
+
+Variety of different bird types - Planned 2, got 8 unique bird types. All awesome. Check
+
+Enemy elimination - Enemies take damage from being hit by birds, fast moving blocks, and falling to the ground. When hp is 0 they die. Check
+
+Tile destruction - Tiles can be destroyed by birds, fast moving other tiles, or by falling to the ground. Check
+
+Launching birds with slingshot - slingshot allows player to precisely control the vector with which the bird will be launched. It also looks visually consistent(band, projectile following draw) and a few bonus quality of life features
+
+
+
+10/10 points
