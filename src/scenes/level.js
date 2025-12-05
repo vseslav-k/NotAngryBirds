@@ -21,8 +21,12 @@ export default class Level extends Phaser.Scene {
         this.objects["cats"] = this.physics.add.group();
         this.objects["blocks"] = this.physics.add.group();
         this.objects["slingshot"] = this.add.group();
+        this.cameras.main.setBackgroundColor('#87CEEB');
 
         this.instantiateGameObjectsFromLayer(this.map);
+
+        this.cameras.main.setZoom(1.5);
+        this.cameras.main.centerOn(this.objects["slingshot"].getChildren()[0].x,this.objects["slingshot"].getChildren()[0].y );
 
     }
 
@@ -68,9 +72,6 @@ export default class Level extends Phaser.Scene {
 
         for(let bird of this.objects["birds"].getChildren()){this.objects["slingshot"].getChildren()[0].addBird(bird);}
         this.setColliders();
-        
-
-
 
    }
 

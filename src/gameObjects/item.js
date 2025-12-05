@@ -26,6 +26,10 @@ export default class Item extends Phaser.Physics.Arcade.Sprite {
         this.blockedLeftDelayed = false;
         this.blockedRightDelayed = false;
 
+        this.scene.time.delayedCall(1, () => {
+            this.body.setCollideWorldBounds(true);
+        });
+
 
     }
 
