@@ -1,5 +1,5 @@
 // start.js
-import { screenWidth, screenHeight } from '../rules/gameInfo.js';
+import { screenWidth, screenHeight, setBirdData } from '../rules/gameInfo.js';
 import { setBlockData } from '../rules/gameInfo.js';
 export default class Start extends Phaser.Scene {
     constructor() { super('Start'); }
@@ -39,11 +39,13 @@ export default class Start extends Phaser.Scene {
         this.load.image('slingshot', '../assets/sprites/slingshot.png');
 
         this.load.json('blockProperties', '../data/blockProperties.json');
+        this.load.json('birdProperties', '../data/birdProperties.json');
        
     }
 
     create() {
         setBlockData(this.cache.json.get('blockProperties'));
+        setBirdData(this.cache.json.get('birdProperties'));
 
         this.add.rectangle(0, 0, this.scale.width, this.scale.height, 0x06767).setOrigin(0);
         this.add.text(screenWidth/2, screenHeight/2-220, 'Select level',

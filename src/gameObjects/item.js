@@ -3,13 +3,16 @@ export default class Item extends Phaser.Physics.Arcade.Sprite {
         super(scene, obj.x, obj.y, type, 0);
         scene.add.existing(this);
         scene.physics.add.existing(this, false);
-        
         this.scene = scene;
-        this.makeCollider(scene, obj, type);
-        this.readItemData(type);
-        this.body.damping = true;
 
+        this.body.damping = true;
+        this.drag = {x:0, y: 0};
         this.damage = 1;
+        
+        this.readItemData(type);
+        this.makeCollider(scene, obj, type);
+
+
 
         this.preCollideVelocity = {x: 0, y:0};
         this.isColliding = false;
@@ -23,24 +26,13 @@ export default class Item extends Phaser.Physics.Arcade.Sprite {
         this.blockedLeftDelayed = false;
         this.blockedRightDelayed = false;
 
-    }
-
-
-    readItemData(type){
-
-    
-    }
-
-
-    makeCollider(scene, obj, type){
 
     }
-    
 
-    onHit(other){
 
-    
-    }
+    readItemData(type){}
+    makeCollider(scene, obj, type){}
+    onHit(other){}
 
 
 

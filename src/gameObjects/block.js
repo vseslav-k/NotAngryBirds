@@ -7,14 +7,6 @@ export default class Block extends Item {
         this.setScale(obj.width / 4, obj.height /4);
         scene.objects["blocks"].add(this);
         this.tint = 0xffffff;
-
-
-
-
-
-
-
-
     }
 
 

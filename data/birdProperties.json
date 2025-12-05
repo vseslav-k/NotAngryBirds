@@ -1,0 +1,65 @@
+{
+    "red": {
+        "mass": 1,
+        "scale": 1,
+        "damage": 1,
+        "bounce": 0.3,
+        "drag": 0.3
+    },
+    "blue": {
+        "mass": 1,
+        "scale": 1,
+        "damage": 1,
+        "bounce": 0.3,
+        "drag": 0.3
+    },
+    "yellow": {
+        "mass": 1,
+        "scale": 1,
+        "damage": 1,
+        "bounce": 0.3,
+        "drag": 0.3
+    },
+    "green": {
+        "mass": 1,
+        "scale": 1,
+        "damage": 1,
+        "bounce": 0.3,
+        "drag": 0.3
+    },
+    "orange": {
+        "mass": 1,
+        "scale": 1,
+        "damage": 1,
+        "bounce": 0.3,
+        "drag": 0.3
+    },
+    "cyan": {
+        "mass": 1,
+        "scale": 1,
+        "damage": 1,
+        "bounce": 0.3,
+        "drag": 0.3
+    },
+    "purple": {
+        "mass": 1,
+        "scale": 1,
+        "damage": 1,
+        "bounce": 0.3,
+        "drag": 0.3
+    },
+    "black": {
+        "mass": 1,
+        "scale": 1,
+        "damage": 1,
+        "bounce": 0.3,
+        "drag": 0.3
+    },
+    "brown": {
+        "mass": 1,
+        "scale": 1,
+        "damage": 1,
+        "bounce": 0.3,
+        "drag": 0.3
+    }
+}

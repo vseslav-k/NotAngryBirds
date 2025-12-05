@@ -1,4 +1,5 @@
 import Block from "../gameObjects/block.js";
+import Bird from "../gameObjects/bird.js";
 import Slingshot from "../gameObjects/slingshot.js";
 export default class Level extends Phaser.Scene {
     constructor(levelName, mapName, tilesetName) {
@@ -22,7 +23,6 @@ export default class Level extends Phaser.Scene {
 
         this.instantiateGameObjectsFromLayer(this.map);
 
-        this.objects["slingshot"].getChildren()[0].setProjectile(this.objects["blocks"].getChildren()[0]);
     }
 
 
@@ -43,35 +43,64 @@ export default class Level extends Phaser.Scene {
         //Tiled object properties are stored in an array for some stupid reason so we need to convert them to an object first
         let properties = this.serializeObjectProperties(obj.properties);
      
-         switch(properties['type']){
-            case "cat":
-                break;
-            case "catKing":
-                break;
-            case "bird":
-                break;
-            case "slingshot":
-                new Slingshot(this, obj.x, obj.y);
-                break;
-            case undefined:
-                console.warn(`Game object at (${obj.x}, ${obj.y}) is missing a 'type' property.`);
-                break;
-            case "block":
-                new Block(this, obj, properties['subtype']);
-                break;
+            switch(properties['type']){
+                case "cat":
+                    break;
+                case "catKing":
+                    break;
+                case "bird":
+                    new Bird(this, obj, properties['subtype'], properties['index']);
+                    break;
+                case "slingshot":
+                    new Slingshot(this, obj.x, obj.y);
+                    break;
+                case undefined:
+                    console.warn(`Game object at (${obj.x}, ${obj.y}) is missing a 'type' property.`);
+                    break;
+                case "block":
+                    new Block(this, obj, properties['subtype']);
+                    break;
 
-         }
-     }
+            }
+        }
 
-     this.physics.add.collider(this.objects["blocks"], this.objects["blocks"], (self, other) => {
-        self.onHit(other);
-     });
-     this.physics.add.overlap(this.objects["blocks"], this.objects["blocks"], (self, other) => {
-        self.onHit(other);
-    });
-     this.physics.add.collider(this.objects["blocks"], this.ground, (block, ground) => {
+        this.objects["slingshot"].getChildren()[0].birds = new Array(this.objects["birds"].getChildren().length);
+
+        for(let bird of this.objects["birds"].getChildren()){this.objects["slingshot"].getChildren()[0].addBird(bird);}
+        this.setColliders();
+        
+
+
+
+   }
+
+
+   setColliders(){
+
+    this.physics.add.collider(this.objects["blocks"], this.ground, (block, ground) => {
         block.onHit(ground);
     });
+    this.physics.add.collider(this.objects["birds"], this.ground, (bird, ground) => {
+        bird.onHit(ground);
+    });
+
+
+    this.physics.add.collider(this.objects["blocks"], this.objects["blocks"], (self, other) => {
+        self.onHit(other);
+    });
+    this.physics.add.overlap(this.objects["blocks"], this.objects["blocks"], (self, other) => {
+        self.onHit(other);
+    });
+
+
+
+    this.physics.add.collider(this.objects["birds"], this.objects["blocks"], (bird, block) => {
+        bird.onHit(block);
+    });
+    this.physics.add.overlap(this.objects["birds"], this.objects["blocks"], (bird, block) => {
+        bird.onHit(block);
+    });
+
 
    }
 }

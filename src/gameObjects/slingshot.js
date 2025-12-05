@@ -23,9 +23,20 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
             }
         });
 
+        
+
+        this.birds = [];
+        this.currBirdIdx = 0;
 
         
 
+    }
+
+    addBird(bird){
+        if(this.projectile == null && bird.index == 0){
+            this.setProjectile(bird);
+        }
+        this.birds[bird.index] = bird;
     }
 
     setProjectile(projectile){
@@ -40,7 +51,8 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
         if(this.projectile == null) return;
         this.projectile.body.setVelocity(this.shotVector.x * this.shootForce, this.shotVector.y * this.shootForce);
         this.projectile.body.allowGravity = true;
-        this.projectile = null;
+        this.currBirdIdx++;
+        this.setProjectile(this.birds[this.currBirdIdx]);
         console.log("Shooting with vector: ", this.shotVector);
     }
 
