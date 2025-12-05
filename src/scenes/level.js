@@ -70,6 +70,8 @@ export default class Level extends Phaser.Scene {
         this.setColliders();
         
 
+        console.log("cats:", this.objects["cats"].getChildren());
+
 
 
    }
@@ -83,9 +85,8 @@ export default class Level extends Phaser.Scene {
     this.physics.add.collider(this.objects["birds"], this.ground, (bird, ground) => {
         bird.onHit(ground);
     });
-    this.physics.add.collider(this.objects["cats"], this.ground, (cat, ground) => {
-        cat.onHit(ground);
-    });
+
+    
 
 
 
@@ -95,6 +96,7 @@ export default class Level extends Phaser.Scene {
     this.physics.add.overlap(this.objects["blocks"], this.objects["blocks"], (self, other) => {
         self.onHit(other);
     });
+    
 
 
 
@@ -105,21 +107,11 @@ export default class Level extends Phaser.Scene {
         bird.onHit(block);
     });
 
-    this.physics.add.collider(this.objects["cats"], this.objects["blocks"], (cat, block) => {
-        cat.onHit(block);
-    });
-    this.physics.add.overlap(this.objects["cats"], this.objects["blocks"], (cat, block) => {
-        //cat.onHit(block);
-    });
-
-    this.physics.add.collider(this.objects["cats"], this.objects["birds"], (cat, bird) => {
-        cat.onHit(bird);
-    });
-    this.physics.add.overlap(this.objects["cats"], this.objects["birds"], (cat, bird) => {
-        cat.onHit(bird);
-    });
-
-
+    this.physics.add.collider(this.objects["birds"], this.objects["cats"]);
+    this.physics.add.collider(this.ground, this.objects["cats"]);
+    this.physics.add.collider(this.objects["blocks"], this.objects["cats"]);
+    
+    
 
    }
 }

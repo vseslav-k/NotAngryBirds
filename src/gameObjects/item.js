@@ -7,6 +7,7 @@ export default class Item extends Phaser.Physics.Arcade.Sprite {
 
         this.body.damping = true;
         this.drag = {x:0, y: 0};
+        this.bounce = 0;
         this.damage = 1;
         
         this.readItemData(type);
