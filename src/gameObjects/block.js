@@ -50,18 +50,15 @@ export default class Block extends Item {
     onHit(other){
         //console.log(this.texture.key + " collided with " + (other instanceof  Block? other.texture.key :"ground"));
 
-        this.isColliding = true;
         
         const thisForce = this.getForce();
 
-        if(thisForce < 1){this.isColliding = false; return ;}
+        if(thisForce < 1){ return ;}
 
         this.takeDamage(thisForce * (other.damage ? other.damage : 1));
 
         if(other instanceof  Block) other.takeDamage(thisForce * this.damage);
 
-
-        this.isColliding = false;
     
     }
 
@@ -73,7 +70,7 @@ export default class Block extends Item {
     takeDamage(damage){
         super.takeDamage(damage);
         this.tint -= damage * 0x110000;
-        //if(this.hp <= 0) this.destroy();
+        if(this.hp <= 0) this.destroy();
 
     }
 

@@ -70,8 +70,6 @@ export default class Level extends Phaser.Scene {
         this.setColliders();
         
 
-        console.log("cats:", this.objects["cats"].getChildren());
-
 
 
    }
@@ -107,9 +105,15 @@ export default class Level extends Phaser.Scene {
         bird.onHit(block);
     });
 
-    this.physics.add.collider(this.objects["birds"], this.objects["cats"]);
-    this.physics.add.collider(this.ground, this.objects["cats"]);
-    this.physics.add.collider(this.objects["blocks"], this.objects["cats"]);
+    this.physics.add.collider(this.objects["cats"], this.objects["birds"], (cat, bird) => {
+        bird.onHit(cat);
+    });
+    this.physics.add.collider(this.objects["cats"], this.objects["blocks"], (cat, block) => {
+        cat.onHit(block);
+    });
+    this.physics.add.collider(this.objects["cats"], this.ground, (cat, ground) => {
+        cat.onHit(ground);
+    });
     
     
 

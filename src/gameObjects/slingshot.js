@@ -15,7 +15,7 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
         this.graphics = scene.add.graphics();
         this.offsetY = -9;
         this.projectile = null;
-        this.shootForce = 15;
+        this.shootForce = 20;
 
         this.scene.input.on('pointerup', (pointer) => {
             if (pointer.button === 0 && this.shotVector.length() > 10) {
@@ -40,7 +40,9 @@ export default class Slingshot extends Phaser.GameObjects.Sprite {
     }
 
     setProjectile(projectile){
+        
         this.projectile = projectile;
+        if(projectile == null || projectile == undefined) return;
         this.projectile.body.allowGravity = false;
         this.projectile.body.setVelocity(0,0);this.projectile
         this.projectile.setPosition(this.x, this.y + this.offsetY);

@@ -16,7 +16,6 @@ export default class Item extends Phaser.Physics.Arcade.Sprite {
 
 
         this.preCollideVelocity = {x: 0, y:0};
-        this.isColliding = false;
 
         this.setImmovable(false);
         this.setPushable(true);
@@ -50,6 +49,7 @@ export default class Item extends Phaser.Physics.Arcade.Sprite {
         if(this.body.touching.left){
             this.blockedLeftDelayed = true;
             this.scene.time.delayedCall(this.blockDelayTime, () => {
+                if(!this.body) return;
                 if(this.body.touching.left) return;
                 this.blockedLeftDelayed = false;
             });
@@ -58,6 +58,7 @@ export default class Item extends Phaser.Physics.Arcade.Sprite {
         if(this.body.touching.right){
             this.blockedRightDelayed = true;
             this.scene.time.delayedCall(this.blockDelayTime, () => {
+                if(!this.body) return;
                 if(this.body.touching.right) return;
                 this.blockedRightDelayed = false;
             });
@@ -92,17 +93,16 @@ export default class Item extends Phaser.Physics.Arcade.Sprite {
     takeDamage(damage){
         console.log(this.texture.key + " took " + damage + " damage.");
         this.hp -= damage;
-        //if(this.hp <= 0) this.destroy();
 
     }
 
     preUpdate(time, delta){
        super.preUpdate(time, delta);
        this.applyGroundDrag(delta);
-       if(!this.isColliding){
-        this.preCollideVelocity.x = this.body.velocity.x;
-        this.preCollideVelocity.y = this.body.velocity.y;
-       }
+
+       this.preCollideVelocity.x = this.body.velocity.x;
+       this.preCollideVelocity.y = this.body.velocity.y;
+
        this.stopJitter();
        this.stopFlying();
 

@@ -2,6 +2,7 @@
 import Item from "./item.js";
 import { birdData } from '../rules/gameInfo.js';
 import Block from "./block.js";
+import Cat from "./cat.js";
 export default class Bird extends Item {
     
     constructor(scene, obj, type, index) {
@@ -33,18 +34,15 @@ export default class Bird extends Item {
 
     onHit(other){
 
-        this.isColliding = true;
         
         const thisForce = this.getForce();
 
-        if(thisForce < 1){this.isColliding = false; return ;}
+        if(thisForce < 1){return ;}
 
-        this.takeDamage(thisForce * (other.damage ? other.damage : 1));
 
         if(other instanceof  Block) other.takeDamage(thisForce * this.damage);
+        if(other instanceof  Cat) other.takeDamage(thisForce * this.damage);
 
-
-        this.isColliding = false;
     
     }
    

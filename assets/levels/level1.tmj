@@ -471,8 +471,54 @@
                  "type":"",
                  "visible":true,
                  "width":4,
-                 "x":198.333333333334,
-                 "y":38.1666666666667
+                 "x":265,
+                 "y":27.5000000000001
+                }, 
+                {
+                 "gid":2955,
+                 "height":4,
+                 "id":58,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"plankLongRock"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":306.25,
+                 "y":122.25
+                }, 
+                {
+                 "gid":2955,
+                 "height":4,
+                 "id":59,
+                 "name":"",
+                 "properties":[
+                        {
+                         "name":"subtype",
+                         "type":"string",
+                         "value":"plankLongRock"
+                        }, 
+                        {
+                         "name":"type",
+                         "type":"string",
+                         "value":"block"
+                        }],
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":4,
+                 "x":341.5,
+                 "y":122.25
                 }],
          "offsetx":1,
          "offsety":0.5,
@@ -483,7 +529,7 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":58,
+ "nextobjectid":60,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.11.2",
